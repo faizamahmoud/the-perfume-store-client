@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom'
-
+import {clearUserToken} from '../utils/authToken'
 
 export default function Product() {
 
@@ -9,13 +9,10 @@ export default function Product() {
 
     const params = useParams();
     
-    const perfumeId = `${params.perfumeId}` 
-    // console.log(params)
 
     useEffect(() => {
-        // const url = `http://perfume-store-fm.herokuapp.com/inventory/${params.perfumeId}`
-        // const url = `https://my-perfumes-api.herokuapp.com/perfumes/${perfumeId}`
-        fetch(`https://my-perfumes-api.herokuapp.com/perfumes/${perfumeId}`)
+        
+        fetch(`https://perfume-store-fm.herokuapp.com/inventory/${params.id}`)
             .then((res) => res.json())
             .then((data) => setPerfume(data))
 
@@ -33,6 +30,7 @@ export default function Product() {
             <>
 
                 <h3>{perfume.name}</h3>
+                <img src={perfume.image} alt = {perfume.name}/>
                 <p>{perfume.brand}</p>
                 <p>{perfume.description}</p>
             </>

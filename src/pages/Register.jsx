@@ -3,16 +3,19 @@ import { useState } from 'react'
 
 
 const RegisterForm = ({ signUp}) => {
-    const initialState = { username: "", password: "" }
+    
+    //*state to hold form data
+    const initialState = { username: "", password: "" } 
     const [unregistered, setRegister] = useState(initialState)
     
     const navigate = useNavigate()
 
+    //*handles form submission and trigger a re-render form
     const handleSubmit = async (e) => {
         e.preventDefault()
         const createdUserToken = await signUp(unregistered)
 
-        if (createdUserToken) {
+        if (!createdUserToken) {
             navigate("/login")
             // loggedIn
         } else {
@@ -21,6 +24,7 @@ const RegisterForm = ({ signUp}) => {
         setRegister(initialState);
     };
 
+     //*function will handle our components state to control the form
     const handleChange = (e) => {
         setRegister({ ...unregistered, [e.target.name]: e.target.value });
     };

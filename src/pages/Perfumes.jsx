@@ -53,7 +53,7 @@ function Perfumes() {
                         return (
            
                             <div className="card" >
-                                <Link to= {`${idx}`}>
+                                <Link to= {`${perfume._id}`}>
                                 <h1>{perfume.name}</h1>
                         </Link>
                          </div>      
