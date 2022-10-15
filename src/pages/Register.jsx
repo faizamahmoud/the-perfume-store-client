@@ -1,12 +1,14 @@
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-
+import Form from "react-bootstrap/Form";
+import "../styles/Register.css";
 
 const RegisterForm = ({ signUp}) => {
     
-    //*state to hold form data
-    const initialState = { username: "", password: "" } 
-    const [unregistered, setRegister] = useState(initialState)
+    
+    const [unregistered, setRegister] = useState({ name: "", username: "", email: "", password: "" } )
+    // const [successful, setSuccessful] = useState(false);
+    
     
     const navigate = useNavigate()
 
@@ -21,59 +23,66 @@ const RegisterForm = ({ signUp}) => {
         } else {
             navigate("/")
         }
-        setRegister(initialState);
+        setRegister(unregistered);
     };
 
      //*function will handle our components state to control the form
     const handleChange = (e) => {
         setRegister({ ...unregistered, [e.target.name]: e.target.value });
+        
     };
 
-    return (
-        <>
-            <h1>Register</h1>
-            <form onSubmit={handleSubmit}>
-                
-                <label htmlFor="username">Name: </label>
-                <input
-                    id="name"
-                    name="name"
-                    value={unregistered.name}
-                    onChange={handleChange}
-                />
-                <br />
-                <br />
-                <label htmlFor="username">email: </label>
-                <input
-                    id="email"
-                    name="email"
-                    value={unregistered.email}
-                    onChange={handleChange}
-                />
-                <br />
-                <br />
-                <label htmlFor="username">username: </label>
-                <input
-                    id="username"
-                    name="username"
-                    value={unregistered.username}
-                    onChange={handleChange}
-                />
-                <br />
-                <br />
-                <label htmlFor="password">Password: </label>
-                <input
-                    id="password"
-                    name="password"
-                    value={unregistered.password}
-                    onChange={handleChange}
-                />
-                <br />
-                <br />
-                <input type="submit" value="Sign Up" />
-            </form>
-        </>
-    );
+
+
+   
+return (
+    <div className="Sign-Up">
+      
+      <Form onSubmit={handleSubmit}>
+      <Form.Group size="lg" controlId="name">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            autoFocus
+            type="name"
+            value={unregistered.name}
+            onChange={handleChange}
+          />
+          </Form.Group>
+        <Form.Group size="lg" controlId="username">
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            autoFocus
+            type="username"
+            value={unregistered.username}
+            onChange={handleChange}
+          />
+        </Form.Group>
+        <Form.Group size="lg" controlId="email">
+          <Form.Label>email</Form.Label>
+          <Form.Control
+            autoFocus
+            type="email"
+            value={unregistered.email}
+            onChange={handleChange}
+          />
+        </Form.Group>
+        <Form.Group size="lg" controlId="password">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            value={unregistered.password}
+            onChange={handleChange}
+            autoComplete="off"
+          />
+        </Form.Group>
+        {/* <button type="submit">
+          Login
+        </button> */}
+        <input type="submit" value="Sign Up" />
+      </Form>
+    </div>
+  );
 };
 
 export default RegisterForm
+

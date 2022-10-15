@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
+import { Link } from 'react-router-dom';
 import "../styles/Login.css";
 import { useNavigate } from "react-router-dom";
 
@@ -11,9 +11,9 @@ export default function Login({loggedIn}) {
   const handleSubmit = async (e) =>{
     e.preventDefault();
     try {
-      const res = await loggedIn(login)
+      const response = await loggedIn(login)
 
-      console.log(loggedIn)
+      console.log(response)
       navigate('/', {replace: true})
     }catch(err){
       console.log(err)
@@ -26,6 +26,7 @@ export default function Login({loggedIn}) {
     setLoggedIn({ ...login, [e.target.name]: e.target.value });
   }
 
+  //! route to sign up page below
 
   return (
     <div className="Login">
@@ -49,8 +50,10 @@ export default function Login({loggedIn}) {
             autoComplete="off"
           />
         </Form.Group>
-        <button type="submit">
-          Login
+        {/* <a href={`${login._id}`} target="_blank" rel="noreferrer"></a> */}
+        <button onClick={`${login._id}`} type="submit">
+        
+        {/* <Link to={`${login._id}`}>{login.name}</Link> */}
         </button>
       </Form>
     </div>

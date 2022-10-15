@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 // delete and update users
 
-export default function Profile({deleteProfile, updateProfile}) {
+export default function Profile() {
 
     const [profile, setProfile] = useState(null) ;
     const [editProfile, setEditProfile] = useState(null);

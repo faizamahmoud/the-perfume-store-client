@@ -1,20 +1,21 @@
-const Edit = ({ handleSubmit, handleChange, updateProfile, val }) => {
+const Edit = ({ handleUpdateSubmit, handleUpdateChange, updateProfile, val }) => {
 
-    <form className="EditForm" onSubmit={handleSubmit}>
-        <label>
-            <span>username</span>
-            <input type="text" required name="username" placeholder="username" onChange={handleChange} value={updateProfile.username} />
-        </label>
-        <label>
-            <span>email</span>
-            <input type="text" required name="email" placeholder="email" onChange={handleChange} value={updateProfile.email} />
-        </label>
-        <label>
-            <span>password</span>
-            <input type="text" required name="password" placeholder="password" onChange={handleChange} value={updateProfile.password} />
-        </label>
-        <input type="submit" value={val} />
+    <form className="EditForm" onSubmit={handleUpdateSubmit}>
+        <label htmlFor="username">Username:</label>
+
+        <input id="username" type="text" placeholder="username" onChange={handleUpdateChange} value={updateProfile.username} />
+
+
+        <label htmlFor="email">email:</label>
+        <input id="email" type="text" placeholder="email" onChange={handleUpdateChange} value={updateProfile.email} />
+
+        <label htmlFor="password">password:</label>
+
+        <input id="password" type="text" placeholder="password" onChange={handleUpdateChange} value={updateProfile.password} />
+
+        <button type="submit" value={val} >Edit Profile</button>
     </form>
 }
 
 export default Edit
+// required name="username"
