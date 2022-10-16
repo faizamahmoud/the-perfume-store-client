@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+// import { Link } from 'react-router-dom';
 import "../styles/Login.css";
 import { useNavigate } from "react-router-dom";
 
@@ -14,7 +15,7 @@ export default function Login({loggedIn}) {
       const response = await loggedIn(login)
 
       console.log(response)
-      navigate('/', {replace: true})
+      navigate('/')
     }catch(err){
       console.log(err)
       navigate('/login')
@@ -50,16 +51,16 @@ export default function Login({loggedIn}) {
             autoComplete="off"
           />
         </Form.Group>
-        {/* <a href={`${login._id}`} target="_blank" rel="noreferrer"></a> */}
-        <button onClick={`${login._id}`} type="submit">
         
-        {/* <Link to={`${login._id}`}>{login.name}</Link> */}
-        </button>
+      
+
+<a href={`${login._id}`} target="_self">
+  <Button type="submit"> Login </Button>
+</a>
       </Form>
     </div>
   );
 }
-
 
 
 

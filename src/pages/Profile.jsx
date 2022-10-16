@@ -1,73 +1,94 @@
-// !page displays user information after the login action is successful.
-import { useState } from "react";
+// import { useParams, useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
-import { Link } from "react-router-dom"
+function Profile({deleteProfile, updateProfile}) {
+    // no 
 
-// delete and update users
+    const [editForm, setEditForm] = useState(null)
 
-export default function Profile({deleteProfile, updateProfile}) {
+    // const navigate = useNavigate()
+    // const params = useParams()
+    // const { id } = params
 
-    const [profile, setProfile] = useState(null) ;
-    const [editProfile, setEditProfile] = useState(null);
-    
-    
-    const handleUpdateSubmit = async (e) => {
-        const updateUser = await updateProfile(editProfile)
+
+
+    const handleChange = (e) => setEditForm({ ...editForm, [e.target.name]: e.target.value })
+
+    const handleSubmit = async (e) => {
+        const updateUser = await updateProfile(editForm)
 
         try {
-            setProfile(updateUser)
-            setEditProfile(updateUser)
+            
+            setEditForm(updateUser)
         } catch (err) {
             console.log(err)
         }
     }
-        
     
-    const handleUpdateChange = (e) => setEditProfile({ ...editProfile, [e.target.name]: e.target.value })
-       
-    const loaded = () => {
-        return (
-            <div className="user">
-         
-                <h1>Update Page</h1>
-                <h2>{profile.username}</h2>
-                <h2>{profile.email}</h2>
-                <h2>{profile.password}</h2>
-            </div>
-        )
-    }
 
-    const loading = () => {
-        return <h1>Loading.........</h1>
-        
-    }
+    const loaded = () => (
+        <>
+            <section>
+                <div className="user">
+                    <h1>Show Page</h1>
+                    <h2>{editForm.username}</h2>
+                    <h2>{editForm.email}</h2>
+                    {/* <img src={editForm.image} alt={editForm.name + " image"} /> */}
+                    <div>
+                        <button
+                            className="delete"
+                            onClick={deleteProfile}>
+                            Remove user profile
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <h2>Edit this Profile</h2>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        value={editForm.username}
+                        name="username"
+                        placeholder="username"
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="email"
+                        value={editForm.email}
+                        name="email"
+                        placeholder="email"
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="password"
+                        value={editForm.password}
+                        name="password"
+                        placeholder="password"
+                        onChange={handleChange}
+                    />
+                    <input type="submit" value="Update Profile" />
+                </form>
+            </section>
+        </>
 
+
+    )
+
+
+    const loading = () => (
+        <>
+            <h1>
+                Loading...
+            </h1>
+        </>
+    );
     return (
-        <section>
-
-            {editProfile ?
-            <form className="EditForm" onSubmit={handleUpdateSubmit}>
-                <label htmlFor="username">Username:</label>
-                <input id="username" type="text" placeholder="username" onChange={handleUpdateChange} value={updateProfile.username} />
-                <label htmlFor="email">email:</label>
-                <input id="email" type="text" placeholder="email" onChange={handleUpdateChange} value={updateProfile.email} />
-                <label htmlFor="password">password:</label>
-                <input id="password" type="text" placeholder="password" onChange={handleUpdateChange} value={updateProfile.password} />
-                <button type="submit">Edit Profile</button>
-            </form>
-             : null} 
-
-            {profile ? loaded() : loading()}
-
-            <div className="button-wrapper"><Link to="/">Back Home</Link>
-                <button onClick={deleteProfile} >Delete </button>
-            </div>
-        </section>
+        <div>{editForm ? loaded() : loading()}</div>
     )
 }
 
-
-
+export default Profile
 
 
 

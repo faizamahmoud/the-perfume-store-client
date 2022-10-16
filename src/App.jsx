@@ -1,27 +1,27 @@
 import './App.scss';
 import React from 'react';
 import Main from './components/Main'
-import { getUserToken, setUserToken, clearUserToken } from './utils/authToken'
-import { useState, useParams } from 'react'
+// import { getUserToken, setUserToken, clearUserToken } from './utils/authToken'
+import { useState } from 'react'
+import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Nav from './components/NavBar'
 // import jwt_decode from "jwt-decode";
-
+//! logs in when password is wrong
 function App() {
-
-
-  const [currentUser, setCurrentUser] = useState({})
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  // const [isLoggedIn, setLogIn] = useState(false)
 
 
   const navigateTo = useNavigate();
   const params = useParams();
-  // const {id} = `${params.currentUser._id}`;
-  // const {id} = `${params.id}`
-  // const url = `https://perfume-store-fm.herokuapp.com/auth/register`
 
+  const [currentUser, setCurrentUser] = useState({})
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
 
+  const thisThrows = async () => {
+    throw new Error("Thrown from thisThrows()");
+  }
+  // Local storage can only save strings, so storing objects requires that they be converted into strings using JSON.stringify before 
+  // storing them. 
   const registerUser = async (data) => {
     try {
       const configs = {
@@ -31,19 +31,50 @@ function App() {
           "Content-Type": "application/json",
         },
       }
-      const newUser = await fetch("https://perfume-store-fm.herokuapp.com/auth/register", configs)
-
-      if (!newUser.ok) {
-        throw new Error(newUser.statusText)
+      // Fetch sends the Request and returns a promise, which is resolved to the Response object when the request completes
+      const newUser = await fetch('http://perfume-store-fm.herokuapp.com/auth/register', configs)
+      // returns a promise 
+      const parsedUser = await newUser.json()
+      console.log(parsedUser)
+      
+      if (newUser.ok) {
+        navigateTo('/login')
+      } else {
+        thisThrows();
       }
 
     } catch (err) {
-      console.log("check registration inputs: ", err)
-
-      clearUserToken();
-      setIsAuthenticated(false);
+      console.log("Not a new user: ", err)
     }
   }
+
+  // const login = async (data) => {
+//     try {
+//       const configs = {
+//         method: "POST",
+//         body: JSON.stringify(data),
+//         headers: {
+//           "Content-Type": "application/json",
+//           // "Authorization": `bearer ${getUserToken()}`
+//         },
+//       }
+//       const fetchData = await fetch('http://perfume-store-fm.herokuapp.com/auth/login', configs);
+      
+// // console.log(fetchData.ok)
+//       if (!fetchData.ok) {
+//         throw new Error(fetchData.statusText)
+//       } else {
+//         const loginJson = await fetchData.json()
+//         setUserToken(loginJson.token)
+//         setCurrentUser(loginJson.currentUser)
+//         setIsAuthenticated(loginJson.isLoggedIn)
+//       }
+//     } catch (err) {
+//       console.log('not authenticated', err)
+//     }
+//   // }
+
+
 
   const login = async (data) => {
     try {
@@ -54,25 +85,21 @@ function App() {
           "Content-Type": "application/json",
         },
       }
+    
+      // const fetchData = await fetch('http://perfume-store-fm.herokuapp.com/auth/login', configs);
+      // const fetchData = await fetch('http://localhost:4000.com/auth/login', configs);
+      
+      const myUser = await fetchData.json();
 
-      const response = await fetch(`https://perfume-store-fm.herokuapp.com/profile/${params.id}`, configs);
-      //! logs in when password is wrong
+      console.log(myUser);
 
-      if (!response.ok) {
-        throw new Error(response.statusText)
-      } else {
-        const loginJson = await response.json()
-        setUserToken(loginJson.token)
-        setCurrentUser(loginJson.currentUser)
-        setIsAuthenticated(loginJson.isLoggedIn)
-        return (loginJson)
-      }
+      // setUserToken(myUser.token);
+      // setCurrentUser(myUser.currentUser);
+      // setIsAuthenticated(myUser.loggedIn);
 
+      return myUser;
     } catch (err) {
-      // clearUserToken()
-      setIsAuthenticated(false)
-      console.log('not authenticated')
-      navigateTo('/login')
+      console.log('not authenticated', err)
     }
   }
 
@@ -87,15 +114,15 @@ function App() {
       const configs = {
         method: "PUT",
         headers: {
-          Authorization: `bearer ${getUserToken()}`,
+          Authorization: `bearer ${getUserToken()}`, //!B
           "Content-Type": "application/json",
         },
       };
 
       // current user id check
 
-      const response = await fetch(`https://perfume-store-fm.herokuapp.com/profile/${params.id}`, configs);
-      
+      const response = await fetch(`http://perfume-store-fm.herokuapp.com/profile/${params.id}`, configs);
+
       const updateProfile = await response.json();
       console.log(updateProfile)
     } catch (err) {
@@ -111,7 +138,7 @@ function App() {
           Authorization: `bearer ${getUserToken()}`
         },
       };
-      const response = await fetch(`https://perfume-store-fm.herokuapp.com/profile/${params.id}`, configs);
+      const response = await fetch(`http://perfume-store-fm.herokuapp.com/profile/${params.id}`, configs);
       const deleteProfile = await response.json()
       console.log(deleteProfile)
       logout();
@@ -126,8 +153,8 @@ function App() {
   return (
     <div className="App">
       {/* <Header user={currentUser}/> */}
-      <Nav login={login} logout={logout}/>
-      <Main auth={isAuthenticated} signup={registerUser} login={login} logout={logout} deleteProfile={deleteUser} updateProfile={updateUser} user={currentUser} />
+      <Nav login={login} logout={logout} />
+      <Main auth={isAuthenticated} signup={registerUser} login={login} deleteProfile={deleteUser} updateProfile={updateUser} user={currentUser} />
     </div>
   )
 }

@@ -15,15 +15,15 @@ const RegisterForm = ({ signUp}) => {
     //*handles form submission and trigger a re-render form
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const createdUserToken = await signUp(unregistered)
+        const createdUser = await signUp(unregistered)
 
-        if (!createdUserToken) {
-            navigate("/login")
-            // loggedIn
-        } else {
-            navigate("/")
-        }
-        setRegister(unregistered);
+        // if (!createdUserToken) {
+        //     navigate("/login")
+        //     // loggedIn
+        // } else {
+        //     navigate("/")
+        // }
+        
     };
 
      //*function will handle our components state to control the form
@@ -43,7 +43,8 @@ return (
           <Form.Label>Name</Form.Label>
           <Form.Control
             autoFocus
-            type="name"
+            type='text'
+            name="name"
             value={unregistered.name}
             onChange={handleChange}
           />
@@ -52,7 +53,8 @@ return (
           <Form.Label>Username</Form.Label>
           <Form.Control
             autoFocus
-            type="username"
+            type='text'
+            name="username"
             value={unregistered.username}
             onChange={handleChange}
           />
@@ -61,7 +63,8 @@ return (
           <Form.Label>email</Form.Label>
           <Form.Control
             autoFocus
-            type="email"
+            type='text'
+            name="email"
             value={unregistered.email}
             onChange={handleChange}
           />
@@ -69,10 +72,11 @@ return (
         <Form.Group size="lg" controlId="password">
           <Form.Label>Password</Form.Label>
           <Form.Control
-            type="password"
+            type='text'
+            name="password"
             value={unregistered.password}
             onChange={handleChange}
-            autoComplete="off"
+            // autoComplete="off"
           />
         </Form.Group>
         {/* <button type="submit">
