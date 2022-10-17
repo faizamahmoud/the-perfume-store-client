@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Card from 'react-bootstrap/Card';
-import "../styles/Perfumes.css"
+
 
 // ! need token to add it to user profile
 function Perfumes() {
@@ -18,28 +17,35 @@ function Perfumes() {
             .then((json) => {
                 // console.log(json)
                 setData(json)
-        })
-    .catch(console.error)}, []);
+            })
+            .catch(console.error)
+    }, []);
 
-    return (
-        data.map((perfume, idx, results) => {
-            perfume.key = idx;
-            return (
-                <div className= "perfumes-container">
-               
-                    <div className="perfumes-card">
-                    
-                        <img className="perfumes-img" variant="bottom" src={perfume.image}  max-width='100%'/>
-                        
-                            <Link to={`${perfume._id}`}>{perfume.name}</Link>
-                        
-                    
-                    </div>
+        return (
+            <section className="perfumes-container">
+        {
+            data.map((perfume, idx, results) => {
+                perfume.key = idx;
                 
-                </div>
-            )
-        })
-    )
+                return (
+
+                    <div className="perfumes-card">
+
+                        <img className="perfumes-img" src={perfume.image} alt={perfume.name} />
+
+                        <Link to={`${perfume._id}`}>{perfume.name}</Link>
+
+
+                    </div>
+
+                )
+                
+            })
+        }
+    </section>
+        )
+
+
 }
 
 export default Perfumes;

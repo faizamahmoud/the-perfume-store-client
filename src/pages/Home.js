@@ -1,3 +1,5 @@
+
+
 // !page is public for all visitor.
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 // import { Carousel } from 'react-responsive-carousel';
@@ -28,8 +30,11 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 
   function Home() {
     return (
-      <div className='carousel'>
-      <Carousel slide={false}>
+      <div className='carousel-contain'  height= "auto "
+      width= "auto" 
+      max-width= "500"
+      max-height="800">
+      <Carousel className="carousel"  slide={false}>
         <Carousel.Item>
         <span>  <img src="https://www.sephora.com/productimages/product/p429419-av-10-zoom.jpg?imwidth=1224"   margin="auto" alt="First slide" /></span>
           <Carousel.Caption>

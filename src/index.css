@@ -1,13 +1,83 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
+    font-family: 'Saira Condensed', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(108, 103, 87);
+  
 }
-
+.Navbar navbar-custom {
+  background-color: lightgreen;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.carousel{
+  height: auto; 
+  width: auto; 
+  max-width: 300px; 
+  max-height: 300px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+.perfumes-container{
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 150px;
+/* flex-direction: row; */
+  }
+
+  a:link, a:visited{ 
+    text-decoration: none; 
+  color: white;
+  }
+  .perfumes-card {
+    
+      /* width: 32%; */
+      /* padding-bottom: 32%; Same as width, sets height */
+      /* margin-bottom: 2%; (100-32*3)/2 */
+      height: auto; 
+      width: auto; 
+      max-width: 300px; 
+      max-height: 300px;
+      margin: auto;
+      padding: 30px;
+      text-decoration: none;
+  }
+  .perfumes-card>* {
+    flex: 1 1 80px;
+}
+  /* .product-container{
+    /* position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    /* transform: translate(-50%, -50%);  */
+    
+   
+  /* } */ */
+
+  .product-container-inner{
+    position:fixed;
+    /* overflow-x:hidden;  */
+    /* overflow-y:auto;  */
+    width:500px;
+    height:500px;
+left:50%;
+top:50%;
+margin:-200px 0 0 -450px;
+/* border:1px solid #000; */
+
+  }

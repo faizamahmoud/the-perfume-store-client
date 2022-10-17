@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import "../styles/Login.css";
 import { useNavigate } from "react-router-dom";
 
@@ -55,9 +55,9 @@ export default function Login({loggedIn}) {
         
       
 
-<a href={`${login._id}`} target="_self">
-  <Button type="submit"> Login </Button>
-</a>
+{/* <a href={`${login._id}`} target="_self"> */}
+  <button className="button-container" type="submit"> Login </button>
+{/* </a> */}
       </Form>
     </div>
   );

@@ -28,11 +28,13 @@ export default function Product() {
     return (
         <section className="product-container" >
             <>
-
-                <h3>{perfume.name}</h3>
+<div className="product-container-inner">
+                <h3><strong>{perfume.name}</strong></h3>
                 <img src={perfume.image} alt = {perfume.name} />
                 <p>{perfume.brand}</p>
                 <p>{perfume.description}</p>
+                <small>{perfume.topnotes}</small>
+                </div>
             </>
         </section>
     )

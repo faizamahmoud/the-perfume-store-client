@@ -1,22 +1,6 @@
-import React from 'react';
-import {
-  MDBCol,
-  MDBContainer,
-  MDBRow,
-  MDBCard,
-  MDBCardText,
-  MDBCardBody,
-  MDBCardImage,
-  MDBBtn
-  
-} from 'mdb-react-ui-kit';
-
-export default function ProfilePage() {
-  return (
-    <section style={{ backgroundColor: '#eee' }}>
-      
+<section style={{ backgroundColor: '#eee' }}>
       <MDBContainer className="py-5">
-       
+      <form onSubmit={handleSubmit}>
         <MDBRow>
           <MDBCol lg="4">
             <MDBCard className="mb-4">
@@ -31,11 +15,18 @@ export default function ProfilePage() {
               </MDBCardBody>
             </MDBCard>
 
-           
+            {/* 
+                        type="text"
+                        value={editForm.username}
+                        name="username"
+                        placeholder="username"
+                        onChange={handleChange}
+                    /> */}
           </MDBCol>
           <MDBCol lg="8">
             <MDBCard className="mb-4">
               <MDBCardBody>
+
                 <MDBRow>
                   <MDBCol sm="3">
                     <MDBCardText>Name</MDBCardText>
@@ -75,7 +66,7 @@ export default function ProfilePage() {
                
                 <div className="d-flex justify-content-center mb-20">
                   <MDBBtn>Update Profile</MDBBtn>
-                  <MDBBtn outline className="ms-1">Delete Profile</MDBBtn>
+                  <MDBBtn outline className="ms-1 delete"  onClick={deleteUser}>Delete Profile</MDBBtn>
                 </div>
               </MDBCardBody>
             </MDBCard>
@@ -85,7 +76,6 @@ export default function ProfilePage() {
             
           </MDBCol>
         </MDBRow>
+        </form>
       </MDBContainer>
     </section>
-  );
-}
