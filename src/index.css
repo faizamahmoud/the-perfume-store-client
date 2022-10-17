@@ -3,16 +3,18 @@ body {
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif; */
-    font-family: 'Saira Condensed', sans-serif;
+  font-family: 'Saira Condensed', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color:  rgb(219, 202, 183);
-  
+  background-color: rgb(219, 202, 183);
+
 }
-.navbar  {
+
+.navbar {
   background-color: beige;
-  
+
 }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -20,17 +22,17 @@ code {
 
 .carousel {
   position: relative;
-  top:100px;
+  top: 100px;
 }
 
-.carousel-inner{
-  height: auto; 
-  width: auto; 
-  max-width: 500px; 
+.carousel-inner {
+  height: auto;
+  width: auto;
+  max-width: 500px;
   max-height: 500px;
   position: relative;
-  left:500px;
-  
+  left: 500px;
+
 }
 
 img {
@@ -39,58 +41,51 @@ img {
 }
 
 
-.perfumes-container{
+.perfumes-container {
 
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   margin-top: 150px;
-/* flex-direction: row; */
-  }
+  /* flex-direction: row; */
+}
 
-  a:link, a:visited{ 
-    text-decoration: none; 
-    color:black
-    
-  }
-  .perfumes-card {
-    
-      /* width: 32%; */
-      /* padding-bottom: 32%; Same as width, sets height */
-      /* margin-bottom: 2%; (100-32*3)/2 */
-      height: auto; 
-      width: auto; 
-      max-width: 300px; 
-      max-height: 300px;
-      margin: auto;
-      padding: 30px;
-      text-decoration: none;
-  }
-  .perfumes-card>* {
-    flex: 1 1 80px;
+a:link,
+a:visited {
+  text-decoration: none;
+  color: black
+}
 
-  /* /* .product-container{
-    /* position: fixed;
-    top: 50%;
-    left: 50%;
-    /* bring your own prefixes */
-    /* transform: translate(-50%, -50%);  
-     */
-   
-  }
+.perfumes-card {
+
+  height: auto;
+  width: auto;
+  max-width: 300px;
+  max-height: 300px;
+  margin: auto;
+  padding: 30px;
+  text-decoration: none;
+}
+
+.perfumes-card>* {
+  flex: 1 1 80px;
+
+
+}
+
 .product-container-inner {
   display: flex;
   position: relative;
-gap:.5em;
-  /* width: 500px; */
-  /* height: 500px; */
+  gap: .5em;
+
   left: 50%;
   top: 50%;
   margin: 100px 0 0 -550px;
 }
 
-.right, .left{
-width: 500px;
+.right,
+.left {
+  width: 500px;
   height: 500px;
 }
