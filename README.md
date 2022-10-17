@@ -5,7 +5,7 @@
 Description: Sabah is perfume store where users can browse the perfumes in stock and buy or add to their wishlist. 
 
 
-![Screen Shot 2022-10-17 at 12 15 07 PM](https://user-images.githubusercontent.com/56799470/196252278-b7474f08-527b-46d5-abcf-435453d2e694.png)
+![image](https://user-images.githubusercontent.com/56799470/196252473-3cf95aa1-cc01-4ff7-839f-ec0341371f59.png)
 
 
 
