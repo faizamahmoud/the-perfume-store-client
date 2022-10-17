@@ -4,6 +4,9 @@
 
 Sabah is perfume store where users can browse the perfumes in stock and buy or add to their wishlist. 
 
+## netlify
+https://main--deluxe-sherbet-7360d5.netlify.app/
+
 ## API
 https://github.com/faizamahmoud/perfume-api
 
