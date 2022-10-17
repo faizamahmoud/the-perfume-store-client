@@ -1,50 +1,97 @@
-// import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import ProfilePage from '../components/Profile';
 
-function Profile({deleteProfile, updateProfile}) {
-    // no 
+function Profile() {
 
-    const [editForm, setEditForm] = useState(null)
+    const { id } = useParams();
+    const [editForm, setEditForm] = useState({})
+    const navigateTo = useNavigate();
+    const url = 'http://perfume-store-fm.herokuapp.com/profile/'
+    //  const URL = `${BASE_URL}profile/${id}`
+    console.log(url)
 
-    // const navigate = useNavigate()
-    // const params = useParams()
-    // const { id } = params
-
-
-
-    const handleChange = (e) => setEditForm({ ...editForm, [e.target.name]: e.target.value })
 
     const handleSubmit = async (e) => {
-        const updateUser = await updateProfile(editForm)
-
+        e.preventDefault()
+        const options = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editForm) // <===editForm is the current state
+        }
         try {
             
-            setEditForm(updateUser)
+            const response = await fetch(`http://perfume-store-fm.herokuapp.com/profile/${id}`, options)
+            const updatedPerson = await response.json()
+            // trigger a new fetch (getPerson())
+            // setEditForm(updatedPerson)
+            
         } catch (err) {
             console.log(err)
         }
     }
-    
 
+
+    const getForm = async () => {
+
+        try {
+            
+            const response = await fetch(`http://perfume-store-fm.herokuapp.com/profile/${id}`)
+            console.log(`id: ${id}`)
+            const previousData = await response.json()
+            console.log('previous', previousData.user)
+            setEditForm(previousData.user)
+            console.log(editForm) 
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const handleChange = (e) => setEditForm({ ...editForm, [e.target.name]: e.target.value })
+
+    useEffect(() => {
+        getForm()
+    }, [])
+
+
+  const deleteUser = async () => {
+    try {
+      const configs = {
+        method: "DELETE",
+
+      };
+      const response = await fetch(`http://perfume-store-fm.herokuapp.com/profile/${id}`, configs);
+      const deleteProfile = await response.json()
+      console.log(deleteProfile)
+      // logout();
+
+      navigateTo('/');
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
+
+    // console.log(editForm)
     const loaded = () => (
         <>
             <section>
                 <div className="user">
-                    <h1>Show Page</h1>
-                    <h2>{editForm.username}</h2>
-                    <h2>{editForm.email}</h2>
-                    {/* <img src={editForm.image} alt={editForm.name + " image"} /> */}
+
                     <div>
                         <button
                             className="delete"
-                            onClick={deleteProfile}>
+                            onClick={deleteUser}>
                             Remove user profile
                         </button>
                     </div>
-                </div>
-            </section>
-            <section>
-                <h2>Edit this Profile</h2>
+                </div> 
+            
+             
+
                 <form onSubmit={handleSubmit}>
                     <input
                         type="text"
@@ -84,11 +131,13 @@ function Profile({deleteProfile, updateProfile}) {
         </>
     );
     return (
-        <div>{editForm ? loaded() : loading()}</div>
+        <section>
+            <ProfilePage />
+            <div>{editForm ? loaded() : loading()}</div>
+        </section>
     )
 }
 
 export default Profile
-
 
 

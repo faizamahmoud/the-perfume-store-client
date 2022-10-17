@@ -12,10 +12,11 @@ export default function Login({loggedIn}) {
   const handleSubmit = async (e) =>{
     e.preventDefault();
     try {
-      const response = await loggedIn(login)
+      const rez = await loggedIn(login)
 
-      console.log(response)
-      navigate('/')
+      console.log('res',rez)
+      // console.log(${id})
+      navigate(`/profile/${rez.success.id}`)
     }catch(err){
       console.log(err)
       navigate('/login')

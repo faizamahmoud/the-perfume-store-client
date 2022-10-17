@@ -19,7 +19,7 @@ function NavScrollExample(props) {
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="/">Store</Navbar.Brand>
+        <Navbar.Brand href="/">Sabah</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -44,6 +44,7 @@ function NavScrollExample(props) {
               Account settings
             </Nav.Link> */}
           </Nav>
+          {/* <Nav.Link href={`${perfume._id}`}>Profile</Nav.Link> */}
           <Form className="d-flex">
             <Form.Control
               type="search"

@@ -18,11 +18,11 @@ const Main = (props) => {
                 <Route path="/perfumes/:id" element={<Product/>}/> 
                 <Route path="/register" element={<Register signUp={props.signup} />} />
                 <Route path="/login" element={<Login  loggedIn={props.login} />  } />
-                <Route path="/profile/:id" element={<Profile  deleteProfile={props.deleteUser} updateProfile = {props.updateUser} />  } />
+                <Route path="/profile/:id" element={<Profile />  } />
                 
             </Routes>
         </main>
     )
 }
-
+// deleteProfile={props.deleteUser} updateProfile = {props.updateUser} />  
 export default Main;

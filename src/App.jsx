@@ -12,7 +12,7 @@ function App() {
 
 
   const navigateTo = useNavigate();
-  const params = useParams();
+  const {id} = useParams();
 
   const [currentUser, setCurrentUser] = useState({})
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -48,118 +48,63 @@ function App() {
     }
   }
 
-  // const login = async (data) => {
-//     try {
-//       const configs = {
-//         method: "POST",
-//         body: JSON.stringify(data),
-//         headers: {
-//           "Content-Type": "application/json",
-//           // "Authorization": `bearer ${getUserToken()}`
-//         },
-//       }
-//       const fetchData = await fetch('http://perfume-store-fm.herokuapp.com/auth/login', configs);
-      
-// // console.log(fetchData.ok)
-//       if (!fetchData.ok) {
-//         throw new Error(fetchData.statusText)
-//       } else {
-//         const loginJson = await fetchData.json()
-//         setUserToken(loginJson.token)
-//         setCurrentUser(loginJson.currentUser)
-//         setIsAuthenticated(loginJson.isLoggedIn)
-//       }
-//     } catch (err) {
-//       console.log('not authenticated', err)
-//     }
-//   // }
-
-
-
   const login = async (data) => {
     try {
       const configs = {
-        method: "POST",
-        body: JSON.stringify(data),
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
       }
     
-      // const fetchData = await fetch('http://perfume-store-fm.herokuapp.com/auth/login', configs);
-      // const fetchData = await fetch('http://localhost:4000.com/auth/login', configs);
+      const fetchData = await fetch(`https://perfume-store-fm.herokuapp.com/auth/login/${id}`, configs);
       
       const myUser = await fetchData.json();
-
-      console.log(myUser);
-
-      // setUserToken(myUser.token);
-      // setCurrentUser(myUser.currentUser);
-      // setIsAuthenticated(myUser.loggedIn);
-
-      return myUser;
+    console.log(myUser)
+      // console.log(myUser.ok);
+    setCurrentUser(myUser)
+    return(myUser)
     } catch (err) {
       console.log('not authenticated', err)
     }
   }
 
-  const logout = () => {
-    clearUserToken();
-    setUserToken(null);
-    setIsAuthenticated(false);
-  };
+  // const logout = () => {
+  //   // clearUserToken();
+  //   // setUserToken(null);
+  //   // setIsAuthenticated(false);
+  // };
 
-  const updateUser = async () => {
-    try {
-      const configs = {
-        method: "PUT",
-        headers: {
-          Authorization: `bearer ${getUserToken()}`, //!B
-          "Content-Type": "application/json",
-        },
-      };
+  // const updateUser = async () => {
+  //   try {
+  //     const configs = {
+  //       method: "PUT",
+  //       headers: {"Content-Type": "application/json"}
+  //     };
 
-      // current user id check
+  //     // current user id check
 
-      const response = await fetch(`http://perfume-store-fm.herokuapp.com/profile/${params.id}`, configs);
+  //     const rez = await fetch(`http://perfume-store-fm.herokuapp.com/profile/${params.id}`, configs);
 
-      const updateProfile = await response.json();
-      console.log(updateProfile)
-    } catch (err) {
-      console.log(err)
-    }
-  }
-
-  const deleteUser = async () => {
-    try {
-      const configs = {
-        method: "DELETE",
-        headers: {
-          Authorization: `bearer ${getUserToken()}`
-        },
-      };
-      const response = await fetch(`http://perfume-store-fm.herokuapp.com/profile/${params.id}`, configs);
-      const deleteProfile = await response.json()
-      console.log(deleteProfile)
-      logout();
-
-      navigateTo('/');
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  //     const updateProfile = await rez.json();
+  //     console.log(updateProfile)
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
 
   return (
     <div className="App">
       {/* <Header user={currentUser}/> */}
-      <Nav login={login} logout={logout} />
-      <Main auth={isAuthenticated} signup={registerUser} login={login} deleteProfile={deleteUser} updateProfile={updateUser} user={currentUser} />
+      <Nav login={login}  />
+      <Main  signup={registerUser} login={login}  />
     </div>
   )
 }
 
-
-
+// logout={logout}
+// updateProfile={updateUser} 
+// auth={isAuthenticated}
 
 export default App;
