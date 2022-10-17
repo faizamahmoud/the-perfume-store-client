@@ -6,21 +6,31 @@ body {
     font-family: 'Saira Condensed', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(108, 103, 87);
+  background-color:  rgb(219, 202, 183);
   
 }
-.Navbar navbar-custom {
-  background-color: lightgreen;
+.navbar  {
+  background-color: beige;
+  
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.carousel{
+
+.carousel {
+  position: relative;
+  top:100px;
+}
+
+.carousel-inner{
   height: auto; 
   width: auto; 
-  max-width: 300px; 
-  max-height: 300px;
+  max-width: 500px; 
+  max-height: 500px;
+  position: relative;
+  left:500px;
+  
 }
 
 img {
@@ -41,7 +51,8 @@ img {
 
   a:link, a:visited{ 
     text-decoration: none; 
-  color: white;
+    color:black
+    
   }
   .perfumes-card {
     
@@ -58,26 +69,28 @@ img {
   }
   .perfumes-card>* {
     flex: 1 1 80px;
-}
-  /* .product-container{
+
+  /* /* .product-container{
     /* position: fixed;
     top: 50%;
     left: 50%;
     /* bring your own prefixes */
-    /* transform: translate(-50%, -50%);  */
-    
+    /* transform: translate(-50%, -50%);  
+     */
    
-  /* } */ 
-
-  .product-container-inner{
-    position:fixed;
-    /* overflow-x:hidden;  */
-    /* overflow-y:auto;  */
-    width:500px;
-    height:500px;
-left:50%;
-top:50%;
-margin:-200px 0 0 -450px;
-/* border:1px solid #000; */
-
   }
+.product-container-inner {
+  display: flex;
+  position: relative;
+gap:.5em;
+  /* width: 500px; */
+  /* height: 500px; */
+  left: 50%;
+  top: 50%;
+  margin: 100px 0 0 -550px;
+}
+
+.right, .left{
+width: 500px;
+  height: 500px;
+}

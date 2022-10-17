@@ -3,43 +3,27 @@ import { useState } from 'react'
 import Form from "react-bootstrap/Form";
 import "../styles/Register.css";
 
-const RegisterForm = ({ signUp}) => {
-    
-    
-    const [unregistered, setRegister] = useState({ name: "", username: "", email: "", password: "" } )
-    // const [successful, setSuccessful] = useState(false);
-    
-    
-    const navigate = useNavigate()
+const RegisterForm = ({ signUp }) => {
 
-    //*handles form submission and trigger a re-render form
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        const createdUser = await signUp(unregistered)
-
-        // if (!createdUserToken) {
-        //     navigate("/login")
-        //     // loggedIn
-        // } else {
-        //     navigate("/")
-        // }
-        
-    };
-
-     //*function will handle our components state to control the form
-    const handleChange = (e) => {
-        setRegister({ ...unregistered, [e.target.name]: e.target.value });
-        
-    };
+  const [unregistered, setRegister] = useState({ name: "", username: "", email: "", password: "" })
 
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const createdUser = await signUp(unregistered)
 
-   
-return (
+  };
+
+  const handleChange = (e) => {
+    setRegister({ ...unregistered, [e.target.name]: e.target.value });
+  };
+
+
+  return (
     <div className="Sign-Up">
-      
+
       <Form onSubmit={handleSubmit}>
-      <Form.Group size="lg" controlId="name">
+        <Form.Group size="lg" controlId="name">
           <Form.Label>Name</Form.Label>
           <Form.Control
             autoFocus
@@ -48,7 +32,7 @@ return (
             value={unregistered.name}
             onChange={handleChange}
           />
-          </Form.Group>
+        </Form.Group>
         <Form.Group size="lg" controlId="username">
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -76,12 +60,9 @@ return (
             name="password"
             value={unregistered.password}
             onChange={handleChange}
-            // autoComplete="off"
           />
         </Form.Group>
-        {/* <button type="submit">
-          Login
-        </button> */}
+
         <input type="submit" value="Sign Up" />
       </Form>
     </div>

@@ -1,14 +1,14 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import ProfilePage from '../components/Profile';
+import "../styles/Profile.css"
 
-function Profile() {
+
+function Profile(props) {
 
     const { id } = useParams();
     const [editForm, setEditForm] = useState({})
     const navigateTo = useNavigate();
     const url = 'http://perfume-store-fm.herokuapp.com/profile/'
-    //  const URL = `${BASE_URL}profile/${id}`
     console.log(url)
 
 
@@ -19,15 +19,11 @@ function Profile() {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(editForm) // <===editForm is the current state
+            body: JSON.stringify(editForm) 
         }
         try {
-            
             const response = await fetch(`http://perfume-store-fm.herokuapp.com/profile/${id}`, options)
             const updatedPerson = await response.json()
-            // trigger a new fetch (getPerson())
-            // setEditForm(updatedPerson)
-            
         } catch (err) {
             console.log(err)
         }
@@ -74,25 +70,14 @@ function Profile() {
   }
 
 
-
     // console.log(editForm)
     const loaded = () => (
         <>
             <section>
-                <div className="user">
+                <div className="User">
 
-                    <div>
-                        <button
-                            className="delete"
-                            onClick={deleteUser}>
-                            Remove user profile
-                        </button>
-                    </div>
-                </div> 
-            
-             
-
-                <form onSubmit={handleSubmit}>
+               <img src= "https://www.geo.tv/assets/uploads/updates/2019-09-28/249189_5972950_updates.jpg"/>
+                <form className="User form" onSubmit={handleSubmit}>
                     <input
                         type="text"
                         value={editForm.username}
@@ -114,8 +99,19 @@ function Profile() {
                         placeholder="password"
                         onChange={handleChange}
                     />
-                    <input type="submit" value="Update Profile" />
+                    
+                    <div>
+                        <button
+                            className="delete"
+                            onClick={deleteUser}>
+                            delete
+                        </button>
+                        <input type="submit" value="update" />
+                    </div>
+                
                 </form>
+                
+                </div> 
             </section>
         </>
 
@@ -132,7 +128,7 @@ function Profile() {
     );
     return (
         <section>
-            <ProfilePage />
+            
             <div>{editForm ? loaded() : loading()}</div>
         </section>
     )

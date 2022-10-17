@@ -1,13 +1,12 @@
 import './App.scss';
 import React from 'react';
 import Main from './components/Main'
-// import { getUserToken, setUserToken, clearUserToken } from './utils/authToken'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Nav from './components/NavBar'
-// import jwt_decode from "jwt-decode";
-//! logs in when password is wrong
+
+
 function App() {
 
 
@@ -20,8 +19,8 @@ function App() {
   const thisThrows = async () => {
     throw new Error("Thrown from thisThrows()");
   }
-  // Local storage can only save strings, so storing objects requires that they be converted into strings using JSON.stringify before 
-  // storing them. 
+  
+  
   const registerUser = async (data) => {
     try {
       const configs = {
@@ -69,42 +68,16 @@ function App() {
     }
   }
 
-  // const logout = () => {
-  //   // clearUserToken();
-  //   // setUserToken(null);
-  //   // setIsAuthenticated(false);
-  // };
-
-  // const updateUser = async () => {
-  //   try {
-  //     const configs = {
-  //       method: "PUT",
-  //       headers: {"Content-Type": "application/json"}
-  //     };
-
-  //     // current user id check
-
-  //     const rez = await fetch(`http://perfume-store-fm.herokuapp.com/profile/${params.id}`, configs);
-
-  //     const updateProfile = await rez.json();
-  //     console.log(updateProfile)
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
 
 
   return (
     <div className="App">
-      {/* <Header user={currentUser}/> */}
       <Nav login={login}  />
       <Main  signup={registerUser} login={login}  />
     </div>
   )
 }
 
-// logout={logout}
-// updateProfile={updateUser} 
-// auth={isAuthenticated}
+
 
 export default App;

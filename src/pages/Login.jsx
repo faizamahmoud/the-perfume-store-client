@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
 import "../styles/Login.css";
 import { useNavigate } from "react-router-dom";
 
@@ -28,7 +26,7 @@ export default function Login({loggedIn}) {
     setLoggedIn({ ...login, [e.target.name]: e.target.value });
   }
 
-  //! route to sign up page below
+  
 
   return (
     <div className="Login">
@@ -54,10 +52,7 @@ export default function Login({loggedIn}) {
         </Form.Group>
         
       
-
-{/* <a href={`${login._id}`} target="_self"> */}
-  <button className="button-container" type="submit"> Login </button>
-{/* </a> */}
+  <button className="button-container" type="submit" style={{backgroundColor:"#532200", color:"white", borderRadius:"10px solid"}}> login</button>
       </Form>
     </div>
   );

@@ -1,9 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import "../index.css"
 
 
-// ! need token to add it to user profile
 function Perfumes() {
     
     const url = 'http://perfume-store-fm.herokuapp.com/inventory'
@@ -15,7 +15,6 @@ function Perfumes() {
         fetch(url)
             .then((res) => res.json())
             .then((json) => {
-                // console.log(json)
                 setData(json)
             })
             .catch(console.error)
@@ -32,8 +31,9 @@ function Perfumes() {
                     <div className="perfumes-card">
 
                         <img className="perfumes-img" src={perfume.image} alt={perfume.name} />
-
-                        <Link to={`${perfume._id}`}>{perfume.name}</Link>
+                        <span  style={{textAlign:"center", padding: "10px 20px"}}>
+                        <Link to={`${perfume._id}`}>{perfume.name}</Link> ${perfume.price}
+                        </span>
 
 
                     </div>
