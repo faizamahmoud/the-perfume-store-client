@@ -2,7 +2,12 @@
 # Sabah
 
 
-Sabah is perfume store where users can browse the perfumes in stock and buy or add to their wishlist. 
+Description: Sabah is perfume store where users can browse the perfumes in stock and buy or add to their wishlist. 
+
+
+![image](https://user-images.githubusercontent.com/56799470/196252473-3cf95aa1-cc01-4ff7-839f-ec0341371f59.png)
+
+
 
 ## netlify
 https://main--deluxe-sherbet-7360d5.netlify.app/
