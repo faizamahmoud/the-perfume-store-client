@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-import "../styles/Login.css";
+import './index.css'
 import { useNavigate } from "react-router-dom";
 
 export default function Login({loggedIn}) {

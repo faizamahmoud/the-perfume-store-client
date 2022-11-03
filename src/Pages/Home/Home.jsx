@@ -1,6 +1,6 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-
 import Carousel from 'react-bootstrap/Carousel';
+import './index.css';
 
   function Home() {
     return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom'
-
+import './index.css';
 
 export default function Product() {
 
@@ -22,23 +22,23 @@ export default function Product() {
     if (!perfume) {
         return <p>Loading Perfume details ...</p>
     }
-console.log(perfume)
+    // console.log(perfume)
     return (
         <section className="product-container" >
             <>
                 <div className="product-container-inner">
                     <div className="left">
-                    <img src={perfume.image} alt={perfume.name} /></div>
+                        <img src={perfume.image} alt={perfume.name} /></div>
                     <div className="right">
-                    <h3><strong>{perfume.name}</strong></h3>
-                    <p>{perfume.brand}</p>
-                    <p><i>{perfume.description}</i></p>
-                    <h8>Top Notes: {perfume["top notes"]}</h8><br/>
-                    <h8>Middle Notes: {perfume["middle notes"]}</h8><br/>
-                    <h8>Base Notes: {perfume["base notes"]}</h8><br/>
-                    <div><span className="material-symbols-outlined">
-heart_plus
-</span></div></div>
+                        <h3><strong>{perfume.name}</strong></h3>
+                        <p>{perfume.brand}</p>
+                        <p><i>{perfume.description}</i></p>
+                        <h8>Top Notes: {perfume["top notes"]}</h8><br />
+                        <h8>Middle Notes: {perfume["middle notes"]}</h8><br />
+                        <h8>Base Notes: {perfume["base notes"]}</h8><br />
+                        <div><span className="material-symbols-outlined">
+                            heart_plus
+                        </span></div></div>
                 </div>
             </>
         </section>

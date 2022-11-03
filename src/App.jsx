@@ -1,10 +1,10 @@
-import './App.scss';
+
 import React from 'react';
-import Main from './components/Main'
+import Main from './Components/Main'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import Nav from './components/NavBar'
+import Nav from './Components/Nav/NavBar'
 
 
 function App() {

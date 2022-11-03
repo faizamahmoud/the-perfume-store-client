@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import Form from "react-bootstrap/Form";
-import "../styles/Register.css";
+import './index.css'
 
 const RegisterForm = ({ signUp }) => {
 

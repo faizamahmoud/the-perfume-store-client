@@ -1,10 +1,10 @@
 import { Route, Routes} from "react-router-dom";
-import Perfumes from "../pages/Perfumes"
-import Product from "../pages/Product"
-import Register from "../pages/Register"
-import Login from "../pages/Login";
-import Profile from "../pages/Profile";
-import Home from "../pages/Home"
+import Perfumes from "../Pages/PerfumeList/Perfumes"
+import Product from "../Pages/Detail/Product"
+import Register from "../Pages/Register/Register"
+import Login from "../Pages/Login/Login";
+import Profile from "../Pages/Profile/Profile";
+import Home from "../Pages/Home/Home"
 
 const Main = (props) => {
 
