@@ -1,13 +1,12 @@
 
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
+
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Link } from 'react'
+
 import "./index.css"
-function NavScrollExample(props) {
+function NavScrollExample() {
 
   return (
 
@@ -29,6 +28,13 @@ function NavScrollExample(props) {
 
 
           </Nav>
+          <section className="search">
+            <div className="bg-image h-100" style={{ backgroundColor: '#aaf0d1' }}>
+              <div className="mask d-flex align-items-center h-100">
+              </div>
+            </div>
+
+          </section>
 
           <Nav.Link href="/basket"><span style={{ padding: "10px 50px" }} class="material-symbols-outlined">shopping_cart</span></Nav.Link>
           <NavDropdown style={{ padding: "10px 50px" }} title="Hi User" id="navbarScrollingDropdown">
@@ -41,11 +47,11 @@ function NavScrollExample(props) {
             <NavDropdown.Divider />
 
           </NavDropdown>
-          
+
         </Navbar.Collapse>
       </Container>
     </Navbar>
-    
+
   );
 
 }
