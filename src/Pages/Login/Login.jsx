@@ -1,21 +1,30 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import './index.css'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-export default function Login({loggedIn}) {
+
+export default function Login({ handleLogin }) {
   const navigate = useNavigate();
-  const [login , setLoggedIn] = useState({ username: "", password: "" });
+  const { id } = useParams;
+  
+  const [login, setLoggedIn] = useState({ 
+    username: "", 
+    password: "" 
+  });
+  
 
-  const handleSubmit = async (e) =>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const rez = await loggedIn(login)
-
-      console.log('res',rez)
-      // console.log(${id})
-      navigate(`/profile/${rez.success.id}`)
-    }catch(err){
+      // console.log(`loggedIn: ${loggedIn}`)
+      const response = await handleLogin(login)
+      console.log(response)
+      // console.log('result: ', result)
+      // console.log(`id: ${id}`)
+      // navigate(`/profile/${result.success.id}`)
+      navigate('/', {replace: true})
+    } catch (err) {
       console.log(err)
       navigate('/login')
     }
@@ -23,14 +32,17 @@ export default function Login({loggedIn}) {
 
 
   const handleChange = async (e) => {
-    setLoggedIn({ ...login, [e.target.name]: e.target.value });
+    setLoggedIn({
+      ...login, 
+      [e.target.name]: e.target.value 
+    });
   }
 
-  
+
 
   return (
     <div className="Login">
-      
+
       <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="username">
           <Form.Label>Username</Form.Label>
@@ -50,9 +62,9 @@ export default function Login({loggedIn}) {
             autoComplete="off"
           />
         </Form.Group>
-        
-      
-  <button className="button-container" type="submit" style={{backgroundColor:"#532200", color:"white", borderRadius:"10px solid"}}> login</button>
+
+
+        <button className="button-container" type="submit" style={{ backgroundColor: "#532200", color: "white", borderRadius: "10px solid" }}> login</button>
       </Form>
     </div>
   );

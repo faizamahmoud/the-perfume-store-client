@@ -2,82 +2,71 @@
 import React from 'react';
 import Main from './Components/Main'
 import { useState } from 'react'
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import {setUserToken, clearUserToken } from './storage/authToken'
+
+import { setUserToken, clearUserToken } from './storage/authToken'
 import Nav from './Components/Nav/NavBar'
+
 
 
 function App() {
 
-  const navigateTo = useNavigate();
-  const { id } = useParams();
 
-  // success response will update setCurrentUser() which stores information about the current user
-  const [currentUser, setCurrentUser] = useState({})
+  // const URL = 'http://localhost:4000';
+  const URL = 'https://perfume-store-fm.herokuapp.com';
 
-  // setIsAuthenticated() stores a boolean of the response's isLoggedIn.
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  //* create state for users with accounts and authenticating login information
+  const [currentUser, setCurrentUser] = useState() // removed {} // success response will update setCurrentUser() which stores information about the current user
+  const [isAuthenticated, setIsAuthenticated] = useState(false) // setIsAuthenticated() stores a boolean of the response's isLoggedIn.
 
-  const thisThrows = async () => {
-    throw new Error("Thrown from thisThrows()");
-  }
 
-  // make post request to back
-  const registerUser = async (data) => {
+  const registerUser = async (userInfo) => {
     try {
-      const configs = {
+      const requestHeader = {
         method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userInfo)
       }
 
-      // save response in newUser
-      const newUser = await fetch('http://perfume-store-fm.herokuapp.com/auth/register', configs)
 
-      // a promise that resolves to a JS obj
-      const parsedUser = await newUser.json()
+      const response = await fetch(`${URL}/auth/register`, requestHeader);
+      const data = await response.json()
 
+      setUserToken(data.token)
+      setCurrentUser(data.currentUser)
+      setIsAuthenticated(data.loggedIn)
+      return data
 
-      if (newUser.ok) {
-        navigateTo('/login')
-        // sets local storage
-
-      } else {
-        thisThrows();
-      }
-return parsedUser;
-    } catch (err) {
+    }catch (err) {
+      console.log(err)
       clearUserToken();
-
+      setIsAuthenticated(false);
     }
   }
 
-
-  const login = async (data) => {
+  const login = async (userInfo) => {
     try {
-      const configs = {
-        method: "POST",
-        body: JSON.stringify(data),
+      const requestHeader = {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
-      }
-
-      const fetchData = await fetch(`https://perfume-store-fm.herokuapp.com/auth/login/${id}`, configs);
-      const myUser = await fetchData.json();
+        body: JSON.stringify(userInfo)
+      };
 
 
-      setUserToken(myUser.token)
-      // put the returned user object in state
-      setCurrentUser(myUser.currentUser)
-      // adds a boolean cast of the responses isLoggedIn prop
-      setIsAuthenticated(myUser.loggedIn)
-      return (myUser)
+      const response = await fetch(`${URL}/auth/login`, requestHeader);
+      const data = await response.json();
+
+      setUserToken(data.token);
+      setCurrentUser(data.currentUser); // put the returned user object in state
+      console.log(`current user : ${currentUser}`)
+      console.log(` is authenticated : ${isAuthenticated}`)
+      setIsAuthenticated(data.isLoggedIn); // adds a boolean cast of the responses isLoggedIn prop
+      console.log('after setters:', data);
+      return data;
+
     } catch (err) {
-      console.log('not authenticated', err)
+      console.log('NOT AUTHENTICATED in catch: ', err)
       clearUserToken()
       setIsAuthenticated(false)
     }

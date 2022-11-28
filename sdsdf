@@ -17,3 +17,14 @@
     </div>
   </div>
 </div>
+
+
+<!-- currentUser.id -->
+{currentUser: {…}}
+currentUser: 
+basket: []
+createdAt: "2022-11-26T23:35:18.409Z"
+email: "deedee1@gmail.com"
+id: "6382a2b6d830b501be01c445"
+name: "deedee1"
+perfumes purchased
