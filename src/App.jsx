@@ -57,10 +57,11 @@ function App() {
       console.log('response:', response)
 
       setUserToken(data.token);
-      setCurrentUser(data.currentUser); // put the returned user object in state
-      console.log(`current user : ${currentUser}`)
-      console.log(` is authenticated : ${isAuthenticated}`)
+      setCurrentUser(data.username); // put the returned user object in state
+      // console.log(`token : , ${token}`)
+      console.log(` is authenticated : ${data.isAuthenticated}`)
       setIsAuthenticated(data.isLoggedIn); // adds a boolean cast of the responses isLoggedIn prop
+      console.log(data.isLoggedIn)
       console.log('after setters:', data);
       return data;
 

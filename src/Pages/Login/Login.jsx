@@ -16,6 +16,7 @@ export default function Login({ handleLogin }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('login from handleSubmit', login)
     try {
       // console.log(`loggedIn: ${loggedIn}`)
       const response = await handleLogin(login)
@@ -34,11 +35,13 @@ export default function Login({ handleLogin }) {
   const handleChange = async (e) => {
     setLoggedIn({
       ...login, 
-      [e.target.name]: e.target.value 
+      [e.target.id]: e.target.value 
     });
+  
+    console.log('login handlechange', login)
   }
 
-
+  
 
   return (
     <div className="Login">

@@ -19,6 +19,7 @@ function Profile(props) {
             headers: {
                 "Content-Type": "application/json"
             },
+            
             body: JSON.stringify(editForm) 
         }
         try {
