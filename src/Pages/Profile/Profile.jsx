@@ -8,8 +8,8 @@ function Profile(props) {
     const { id } = useParams();
     const [editForm, setEditForm] = useState({})
     const navigateTo = useNavigate();
-    const url = 'http://perfume-store-fm.herokuapp.com/profile/'
-    console.log(url)
+    const URL = 'http://perfume-store-fm.herokuapp.com/profile';
+    
 
 
     const handleSubmit = async (e) => {
@@ -22,7 +22,7 @@ function Profile(props) {
             body: JSON.stringify(editForm) 
         }
         try {
-            const response = await fetch(`http://perfume-store-fm.herokuapp.com/profile/${id}`, options)
+            const response = await fetch(`${URL}/${id}`, options)
             const updatedPerson = await response.json()
         } catch (err) {
             console.log(err)
@@ -34,8 +34,8 @@ function Profile(props) {
 
         try {
             
-            const response = await fetch(`http://perfume-store-fm.herokuapp.com/profile/${id}`)
-            console.log(`id: ${id}`)
+            const response = await fetch(`${URL}/${id}`)
+            // console.log(`id: ${id}`)
             const previousData = await response.json()
             console.log('previous', previousData.user)
             setEditForm(previousData.user)
@@ -58,7 +58,7 @@ function Profile(props) {
         method: "DELETE",
 
       };
-      const response = await fetch(`http://perfume-store-fm.herokuapp.com/profile/${id}`, configs);
+      const response = await fetch(`url/${id}`, configs);
       const deleteProfile = await response.json()
       console.log(deleteProfile)
       // logout();

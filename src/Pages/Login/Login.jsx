@@ -22,8 +22,8 @@ export default function Login({ handleLogin }) {
       console.log(response)
       // console.log('result: ', result)
       // console.log(`id: ${id}`)
-      // navigate(`/profile/${result.success.id}`)
-      navigate('/', {replace: true})
+      // navigate(`/profile/${response._id}`)
+      // navigate('/', {replace: true})
     } catch (err) {
       console.log(err)
       navigate('/login')

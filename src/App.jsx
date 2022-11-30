@@ -2,7 +2,7 @@
 import React from 'react';
 import Main from './Components/Main'
 import { useState } from 'react'
-
+import axios from 'axios';
 import { setUserToken, clearUserToken } from './storage/authToken'
 import Nav from './Components/Nav/NavBar'
 
@@ -11,8 +11,8 @@ import Nav from './Components/Nav/NavBar'
 function App() {
 
 
-  // const URL = 'http://localhost:4000';
-  const URL = 'https://perfume-store-fm.herokuapp.com';
+  const URL = 'http://localhost:4000';
+  // const URL = 'https://perfume-store-fm.herokuapp.com';
 
   //* create state for users with accounts and authenticating login information
   const [currentUser, setCurrentUser] = useState() // removed {} // success response will update setCurrentUser() which stores information about the current user
@@ -22,19 +22,21 @@ function App() {
   const registerUser = async (userInfo) => {
     try {
       const requestHeader = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userInfo)
+        headers: { "Content-Type": "application/json" }
       }
 
 
-      const response = await fetch(`${URL}/auth/register`, requestHeader);
-      const data = await response.json()
+      const response = await axios.post(`${URL}/auth/register/`, JSON.stringify(userInfo), requestHeader);
+      const data = response.data;
+      // console.log('response:', response)
 
       setUserToken(data.token)
       setCurrentUser(data.currentUser)
+      
+
       setIsAuthenticated(data.loggedIn)
-      return data
+      
+      return response
 
     }catch (err) {
       console.log(err)
@@ -44,18 +46,15 @@ function App() {
   }
 
   const login = async (userInfo) => {
+    console.log(userInfo)
     try {
       const requestHeader = {
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(userInfo)
-      };
+        headers: { "Content-Type": "application/json" }
+      }
 
-
-      const response = await fetch(`${URL}/auth/login`, requestHeader);
-      const data = await response.json();
+      const response = await axios.post(`${URL}/auth/login/`, JSON.stringify(userInfo), requestHeader);
+      const data = response.data;
+      console.log('response:', response)
 
       setUserToken(data.token);
       setCurrentUser(data.currentUser); // put the returned user object in state
