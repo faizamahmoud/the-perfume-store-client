@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import './index.css'
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Login({ handleLogin }) {
   const navigate = useNavigate();
-  const { id } = useParams;
   
   const [login, setLoggedIn] = useState({ 
     username: "", 
@@ -16,18 +15,14 @@ export default function Login({ handleLogin }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('login from handleSubmit', login)
+    
     try {
-      // console.log(`loggedIn: ${loggedIn}`)
       const response = await handleLogin(login)
-      console.log(response)
-      // console.log('result: ', result)
-      // console.log(`id: ${id}`)
-      // navigate(`/profile/${response._id}`)
-      // navigate('/', {replace: true})
+      if(response){
+        navigate('/')
+      }
     } catch (err) {
-      console.log(err)
-      navigate('/login')
+        console.log(err) 
     }
   }
 

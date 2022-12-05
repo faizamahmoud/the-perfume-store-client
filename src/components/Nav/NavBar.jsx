@@ -6,10 +6,16 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import "./index.css"
-function NavScrollExample() {
 
+// props: authenticated: false, login: returns user data, currUser:""(username)
+function NavBar({authenticated, login, currUser}) {
+
+if(authenticated){
+  // console.log(currUser)
+  
+  
   return (
-
+    
     <Navbar className="navbar">
       <Container fluid>
         <span class="material-symbols-outlined">
@@ -22,7 +28,7 @@ function NavScrollExample() {
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: '100px' }}
             navbarScroll
-          >
+            >
             <Nav.Link href="/perfumes">shop</Nav.Link>
             <Nav.Link href="#action2"></Nav.Link>
 
@@ -37,7 +43,7 @@ function NavScrollExample() {
           </section>
 
           <Nav.Link href="/basket"><span style={{ padding: "10px 50px" }} class="material-symbols-outlined">shopping_cart</span></Nav.Link>
-          <NavDropdown style={{ padding: "10px 50px" }} title="Hi User" id="navbarScrollingDropdown">
+          <NavDropdown style={{ padding: "10px 50px" }} title={currUser} id="navbarScrollingDropdown">
             <NavDropdown.Item href="/login"><span class="material-symbols-outlined">
               person
             </span>sign in</NavDropdown.Item>
@@ -52,8 +58,9 @@ function NavScrollExample() {
       </Container>
     </Navbar>
 
-  );
+);
+}
 
 }
 
-export default NavScrollExample;
+export default NavBar;

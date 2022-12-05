@@ -19,7 +19,7 @@ const RegisterForm = ({ signUp }) => {
     if (createdUser) {
       navigate("/login")
     } else {
-      navigate("/")
+      navigate("/register")
     }
     setFormData(initialState);
   };
@@ -32,6 +32,7 @@ const RegisterForm = ({ signUp }) => {
   };
 
 
+//! if authenticated = false : error message in jsx
   return (
     <>
       <section className='heading'>
@@ -102,6 +103,8 @@ const RegisterForm = ({ signUp }) => {
     </>
   );
 };
+
+
 
 export default RegisterForm
 
