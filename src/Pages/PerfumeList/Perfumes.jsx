@@ -6,7 +6,7 @@ import "./index.css"
 
 function Perfumes() {
     
-    const url = 'http://perfume-store-fm.herokuapp.com/inventory'
+    const url = 'http://localhost:4000/inventory'
 
     const [data, setData] = useState([])
 
@@ -23,12 +23,12 @@ function Perfumes() {
         return (
             <section className="perfumes-container">
         {
-            data.map((perfume, idx, results) => {
+            data.map((perfume, idx) => {
                 perfume.key = idx;
                 
                 return (
 
-                    <div className="perfumes-card">
+                    <div className="perfumes-card" key={idx}>
 
                         <img className="perfumes-img" src={perfume.image} alt={perfume.name} />
                         <span  style={{textAlign:"center", padding: "10px 20px"}}>

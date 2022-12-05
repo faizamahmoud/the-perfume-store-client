@@ -21,6 +21,11 @@
   color: #828282;
 }
 
+.form{
+  width: 50%;
+  
+}
+
 .form-group {
   margin-bottom: 10px;
 }
