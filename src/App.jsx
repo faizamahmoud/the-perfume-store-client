@@ -1,10 +1,10 @@
 
 import React from 'react';
-import Main from '../src/Components/Main'
 import { useState } from 'react'
 import axios from 'axios';
 import { setUserToken, clearUserToken } from './storage/authToken'
 import Nav from './Components/Nav/NavBar'
+import Main from '../src/Components/Main'
 
 
 
