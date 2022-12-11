@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Main from './Components/Main'
+import Main from '../src/Components/Main'
 import { useState } from 'react'
 import axios from 'axios';
 import { setUserToken, clearUserToken } from './storage/authToken'
