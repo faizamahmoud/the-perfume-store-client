@@ -11,8 +11,8 @@ import Nav from './Components/Nav/NavBar'
 function App() {
 
 
-  const URL = 'http://localhost:4000';
-  // const URL = 'https://perfume-store-fm.herokuapp.com';
+  // const URL = 'http://localhost:4000';
+  const URL = 'https://perfume-store-fm.herokuapp.com';
 
   //* create state for users with accounts and authenticating login information
   const [currentUser, setCurrentUser] = useState({}) // removed {} // success response will update setCurrentUser() which stores information about the current user
