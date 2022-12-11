@@ -9,8 +9,8 @@ Description: Sabah is perfume store where users can browse the perfumes in stock
 
 
 
-## netlify
-https://main--deluxe-sherbet-7360d5.netlify.app/
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/93634831-389d-4f4a-a0a4-4c46c9e26437/deploy-status)](https://app.netlify.com/sites/sabah-perfume-store/deploys)
 
 ## API
 https://github.com/faizamahmoud/perfume-api
