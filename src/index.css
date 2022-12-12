@@ -11,9 +11,12 @@ body {
 }
 
 .navbar {
-  background-color: beige;
+  background-color: rgb(27, 97, 168);
+  height: 120px;
 
 }
+
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
