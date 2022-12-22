@@ -1,21 +1,20 @@
 body {
   margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */
   font-family: 'Saira Condensed', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(219, 202, 183);
-
+  /* background-color: rgb(219, 202, 183); */
+  
+    
 }
 
 .navbar {
-  background-color: rgb(27, 97, 168);
+  background-color:#dbe3ec;
   height: 120px;
-
+  
 }
-
+.navbar > div {
+  font-weight: 600;
+  font-size: .75rem;
+}
 
 
 code {

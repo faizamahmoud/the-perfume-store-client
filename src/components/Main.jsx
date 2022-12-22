@@ -11,7 +11,7 @@ const Main = (props) => {
     
 
     return (
-        <main>
+        
             <Routes>
                 <Route path="/" element={<Home/>} />
                 <Route path="/perfumes" element={<Perfumes/>} />
@@ -21,7 +21,7 @@ const Main = (props) => {
                 <Route path="/profile/:id" element={<Profile />  } />
                 
             </Routes>
-        </main>
+        
     )
 }
 // deleteProfile={props.deleteUser} updateProfile = {props.updateUser} />  

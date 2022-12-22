@@ -8,7 +8,8 @@ function Profile(props) {
     const { id } = useParams();
     const [editForm, setEditForm] = useState({})
     const navigateTo = useNavigate();
-    const URL = 'http://perfume-store-fm.herokuapp.com/profile';
+    const URL = 'http://localhost:4000.com';
+    // const URL = 'http://perfume-store-fm.herokuapp.com/profile';
     
 
 

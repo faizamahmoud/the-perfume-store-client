@@ -5,15 +5,15 @@ import axios from 'axios';
 import { setUserToken, clearUserToken } from './storage/authToken'
 import Nav from './Components/Nav/NavBar'
 import Main from '../src/Components/Main'
+import SearchBar from './Components/SearchBar/SearchBar';
 import Carousel from './Components/Carousel/Carousel';
 
 
 
 function App() {
 
-
-  // const URL = 'http://localhost:4000';
-  const URL = 'https://perfume-store-fm.herokuapp.com';
+  const URL = 'http://localhost:4000.com';
+  // const URL = 'https://perfume-store-fm.herokuapp.com';
 
   //* create state for users with accounts and authenticating login information
   const [currentUser, setCurrentUser] = useState({}) // removed {} // success response will update setCurrentUser() which stores information about the current user
@@ -68,31 +68,10 @@ function App() {
 
   return (
     <div className="App">
-        <Carousel
-        show={2}
-        infiniteLoop
-        withIndicator
-      >
-      <h2 data-testid="carousel-item-1">Item 1</h2>
-      <h2 data-testid="carousel-item-2">Item 2</h2>
-      <h2 data-testid="carousel-item-3">Item 3</h2>
-      <h2 data-testid="carousel-item-1">Item 1</h2>
-      <h2 data-testid="carousel-item-2">Item 2</h2>
-      <h2 data-testid="carousel-item-3">Item 3</h2>
-      <h2 data-testid="carousel-item-1">Item 1</h2>
-      <h2 data-testid="carousel-item-2">Item 2</h2>
-      <h2 data-testid="carousel-item-3">Item 3</h2>
-      <h2 data-testid="carousel-item-1">Item 1</h2>
-      <h2 data-testid="carousel-item-2">Item 2</h2>
-      <h2 data-testid="carousel-item-3">Item 3</h2>
-      <h2 data-testid="carousel-item-1">Item 1</h2>
-      <h2 data-testid="carousel-item-2">Item 2</h2>
-      <h2 data-testid="carousel-item-3">Item 3</h2>
-      </Carousel>
-    
       {/* pass login which returns the user object */}
-      {/* <Nav login={login} authenticated={isAuthenticated} currUser={currentUser}/>
-      <Main signup={registerUser} login={login} authenticated={isAuthenticated} currUser={currentUser} /> */}
+      <Nav login={login} authenticated={isAuthenticated} currUser={currentUser}/>
+      <SearchBar/>
+      <Main signup={registerUser} login={login} authenticated={isAuthenticated} currUser={currentUser} />
     </div>
   )
 }
